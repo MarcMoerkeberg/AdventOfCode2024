@@ -26,7 +26,7 @@
 			Console.ResetColor();
 		}
 
-		public void MoveUp()
+		private void MoveUp()
 		{
 			if (_selectedMenuItemIndex > _minIndex)
 			{
@@ -34,7 +34,7 @@
 			}
 		}
 
-		public void MoveDown()
+		private void MoveDown()
 		{
 			if (_selectedMenuItemIndex < _maxIndex)
 			{
@@ -42,7 +42,10 @@
 			}
 		}
 
-		public void Render()
+		/// <summary>
+		/// Renders all menu items to the console.
+		/// </summary>
+		private void Render()
 		{
 			Console.Clear();
 
@@ -63,7 +66,18 @@
 		/// Prompts the user to select an item from the menu and runs the provided action using the selected menuitem's index.<br/>
 		/// Resets the console after the action has been executed.
 		/// </summary>
-		public void Run(Action<int> action)
+		public void SelectMenuItem(Action<int> action)
+		{
+			int selectedItemIndex = Navigate();
+
+			action(selectedItemIndex);
+			Reset();
+		}
+
+		/// <summary>
+		/// Prompts the user to select an item from the menu and returns the selected items index.
+		/// </summary>
+		private int Navigate()
 		{
 			ConsoleKeyInfo keyInfo;
 
@@ -71,6 +85,7 @@
 			{
 				Render();
 				keyInfo = Console.ReadKey();
+
 				switch (keyInfo.Key)
 				{
 					case ConsoleKey.UpArrow:
@@ -85,8 +100,7 @@
 				}
 			} while (keyInfo.Key != ConsoleKey.Enter);
 
-			action(_selectedMenuItemIndex);
-			Reset();
+			return _selectedMenuItemIndex;
 		}
 	}
 }

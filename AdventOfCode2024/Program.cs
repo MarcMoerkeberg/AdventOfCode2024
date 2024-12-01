@@ -21,7 +21,7 @@ Type SelectDayToRun()
 	navigator.SetMenuItems(menuitems.Select(menuItem => menuItem.Name).ToList());
 	Type selectedDay = typeof(object);
 
-	navigator.Run(selectedIndex =>
+	navigator.SelectMenuItem(selectedIndex =>
 	{
 		selectedDay = menuitems[selectedIndex];
 	});
@@ -35,7 +35,7 @@ MethodInfo SelectMethodToRun(Type dayClass)
 	navigator.SetMenuItems(menuItems.Select(menuItem => menuItem.Name).ToList());
 	MethodInfo selectedMethod = default!;
 
-	navigator.Run(selectedIndex =>
+	navigator.SelectMenuItem(selectedIndex =>
 	{
 		selectedMethod = menuItems[selectedIndex];
 	});
