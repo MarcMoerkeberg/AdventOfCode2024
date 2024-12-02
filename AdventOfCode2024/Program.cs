@@ -48,6 +48,9 @@ void InvokeMethod(Type dayClass, MethodInfo method)
 	object? classInstance = Activator.CreateInstance(dayClass);
 
 	method.Invoke(classInstance, null);
+
+	//TODO: Consider reworking to call another method or class, when done executing/invocing method.
+	Console.ReadKey();
 }
 
 void ProcessException(Exception ex)
