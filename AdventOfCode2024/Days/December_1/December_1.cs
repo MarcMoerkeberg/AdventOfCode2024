@@ -15,7 +15,7 @@
 
 		private static (int[] leftColumn, int[] rightColumn) GetDataColumns()
 		{
-			string dataFilePath = Path.Combine(FileHelper.GetCurrentDirectory(), _dataFileName);
+			string dataFilePath = Path.Combine(FileHelper.GetCallingDirectory(), _dataFileName);
 			string[] fileData = File.ReadAllLines(dataFilePath);
 			int[] leftColumn = new int[fileData.Length];
 			int[] rightColumn = new int[fileData.Length];
