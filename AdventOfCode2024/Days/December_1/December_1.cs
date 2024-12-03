@@ -20,6 +20,25 @@
 			Console.Write(distanceBetweenNumbers.ToString(), ConsoleColor.Green);
 		}
 
+		public void PartTwo()
+		{
+			(int[] leftColumn, int[] rightColumn) = GetDataColumns();
+			Array.Sort(rightColumn);
+
+			int similarityScore = 0;
+			foreach (int leftRow in leftColumn)
+			{
+				//Some timecomplexity here, this should be 0(n), could be more performant with some spin on a binary search.
+				//Making the array smaller could maybe also increase performance.
+				int matchesInRightColumnCount = rightColumn.Count(rightRow => rightRow == leftRow);
+
+				similarityScore += matchesInRightColumnCount * leftRow;
+			}
+
+			Console.WriteLine("Total similarity score: ");
+			Console.Write(similarityScore.ToString(), ConsoleColor.Green);
+		}
+
 		private static (int[] leftColumn, int[] rightColumn) GetDataColumns()
 		{
 			string dataFilePath = Path.Combine(FileHelper.GetCallingDirectory(), _dataFileName);
