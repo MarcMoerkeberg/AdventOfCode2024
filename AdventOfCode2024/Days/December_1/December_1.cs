@@ -50,7 +50,10 @@
 				string[] dataColumnEntries = dataRow.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 				if (dataColumnEntries.Length == 0 || dataColumnEntries.Length > 2)
 				{
-					Console.WriteLine($"Skipping data row. Had issues parsing filedata into rows at index: {i}.", ConsoleColor.DarkYellow);
+					Console.ForegroundColor = ConsoleColor.DarkYellow;
+					Console.WriteLine($"Skipping data row. Had issues parsing filedata into rows at index: {i}.");
+					Console.ResetColor();
+					continue;
 				}
 
 				leftColumn[i] = int.Parse(dataColumnEntries[0]);
