@@ -12,7 +12,7 @@ try
 }
 catch (Exception exception)
 {
-	ProcessException(exception);
+	ConsoleHelper.ProcessException(exception);
 }
 
 Type SelectDayToRun()
@@ -47,24 +47,8 @@ void InvokeMethod(Type dayClass, MethodInfo method)
 {
 	object? classInstance = Activator.CreateInstance(dayClass);
 
+	//TODO: Account for async functions
 	method.Invoke(classInstance, null);
 
 	//TODO: Consider reworking to call another method or class, when done executing/invocing method.
-	Console.ReadKey();
-}
-
-void ProcessException(Exception ex)
-{
-	Console.Clear();
-	Console.ResetColor();
-	Console.WriteLine("An unhandled exception was thrown by the application:");
-
-	Console.ForegroundColor = ConsoleColor.Red;
-	Console.WriteLine(ex.Message);
-	Console.ResetColor();
-
-	Console.WriteLine(ex.StackTrace);
-	Console.ResetColor();
-
-	Environment.Exit(1);
 }

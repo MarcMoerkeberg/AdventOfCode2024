@@ -16,8 +16,7 @@
 				distanceBetweenNumbers += GetDistanceBetweenNumbers(leftColumn[i], rightColumn[i]);
 			}
 
-			Console.WriteLine("Resulting distance between numbers are: ");
-			Console.Write(distanceBetweenNumbers.ToString(), ConsoleColor.Green);
+			ConsoleHelper.ProcessResult("Resulting distance between numbers are: ", distanceBetweenNumbers);
 		}
 
 		public void PartTwo()
@@ -35,8 +34,7 @@
 				similarityScore += matchesInRightColumnCount * leftRow;
 			}
 
-			Console.WriteLine("Total similarity score: ");
-			Console.Write(similarityScore.ToString(), ConsoleColor.Green);
+			ConsoleHelper.ProcessResult("Total similarity score: ", similarityScore);
 		}
 
 		private static (int[] leftColumn, int[] rightColumn) GetDataColumns()
