@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode2024.Days.December_1
+﻿using AdventOfCode2024.Extensions;
+
+namespace AdventOfCode2024.Days.December_1
 {
 	public class December_1
 	{
@@ -13,7 +15,7 @@
 			int distanceBetweenNumbers = 0;
 			for (int i = 0; i < leftColumn.Length; i++)
 			{
-				distanceBetweenNumbers += GetDistanceBetweenNumbers(leftColumn[i], rightColumn[i]);
+				distanceBetweenNumbers += leftColumn[i].DifferenceBetween(rightColumn[i]);
 			}
 
 			ConsoleHelper.ProcessResult("Resulting distance between numbers are: ", distanceBetweenNumbers);
@@ -63,8 +65,6 @@
 			return ValueTuple.Create(leftColumn, rightColumn);
 		}
 
-		private static int GetDistanceBetweenNumbers(int a, int b) => a > b
-			? a - b
-			: b - a;
+
 	}
 }
